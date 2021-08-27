@@ -1,26 +1,34 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { CountComp } from './component/CountComp';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+// function App() {
+//   return (
+//     <div >
+//       <CountComp num={2} onChange={(n) => {
+
+//       }} />
+//     </div>
+//   );
+// }
+
+interface IState {
+  num: number
 }
 
-export default App;
+export class App extends React.Component<{}, IState> {
+
+  state = {
+    num: 0
+  }
+
+  render() {
+    return (
+      <CountComp num={this.state.num} onChange={n => {
+        this.setState({
+          num: n
+        })
+      }} />
+    )
+  }
+}
+
